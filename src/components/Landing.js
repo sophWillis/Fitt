@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
@@ -7,9 +8,9 @@ const Landing = () => {
             <LandingContainer>
                 <LandingLogo>FITT</LandingLogo>
                 <LandingLinksContainer>
-                    <LandingLink>LOG IN</LandingLink>
+                    <LandingLink to="/log-in">LOG IN</LandingLink>
                     |
-                    <LandingLink>SIGN UP</LandingLink>
+                    <LandingLink to="/sign-up">SIGN UP</LandingLink>
                 </LandingLinksContainer>
             </LandingContainer>
         </LandingPage>
@@ -39,4 +40,4 @@ const LandingLinksContainer = styled.div`
     justify-content: space-between;
 `;
 
-const LandingLink = styled.a``;
+const LandingLink = styled(Link)``;

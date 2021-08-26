@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as SunIcon } from "../assets/svg/sun.svg";
 import { ReactComponent as MoonIcon } from "../assets/svg/moon.svg";
 
-const ThemeToggle = () => {
-    const [isEnabled, setIsEnabled] = useState(false);
-
-    const toggleState = () => {
-        setIsEnabled((prevState) => !prevState);
-    };
-
-    const updateTheme = (isDarkEnabled) => {
+const ThemeToggle = ({ isDarkThemeEnabled, toggleState }) => {
+    const updateTheme = (isDarkThemeEnabled) => {
         const styles = getComputedStyle(document.body),
             dark = styles.getPropertyValue("--black"),
             light = styles.getPropertyValue("--white"),
             docEl = document.documentElement;
 
-        if (isDarkEnabled) {
+        if (isDarkThemeEnabled) {
             docEl.style.setProperty("--background", dark);
             docEl.style.setProperty("--foreground", light);
         } else {
@@ -26,16 +20,16 @@ const ThemeToggle = () => {
     };
 
     useEffect(() => {
-        updateTheme(isEnabled);
-    }, [isEnabled]);
+        updateTheme(isDarkThemeEnabled);
+    }, [isDarkThemeEnabled]);
 
     return (
         <label>
-            <Toggle className={isEnabled ? "enabled" : "disabled"} isEnabled={isEnabled}>
-                <span class="hidden">
-                    {isEnabled ? "Enable Dark Mode" : "Enable Light Mode"}
+            <Toggle className={isDarkThemeEnabled ? "enabled" : "disabled"} isDarkThemeEnabled={isDarkThemeEnabled}>
+                <span className="hidden">
+                    {isDarkThemeEnabled ? "Enable Dark Mode" : "Enable Light Mode"}
                 </span>
-                <div class="icons">
+                <div className="icons">
                     <SunIcon />
                     <MoonIcon />
                 </div>
@@ -43,7 +37,6 @@ const ThemeToggle = () => {
                     id="toggle"
                     name="toggle"
                     type="checkbox"
-                    checked={isEnabled}
                     onClick={toggleState}/>
             </Toggle>
         </label>
