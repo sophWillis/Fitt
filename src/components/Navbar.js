@@ -26,7 +26,7 @@ const Navbar = ({ isDarkThemeEnabled, toggleState }) => {
 
     return (
         <Nav>
-            <Logo to={currentUser ? "/dashboard" : "/"} onClick={scrollToTop} className={useLocation().pathname === "/" ? "visually-hidden" : ""}>FITT</Logo>
+            <Logo to="/" onClick={scrollToTop} className={useLocation().pathname === "/" && !currentUser ? "visually-hidden" : ""}>FITT</Logo>
             <NavRight>
                 {currentUser && (
                     <div>

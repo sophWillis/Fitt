@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Landing from './components/Landing';
+import Hero from './components/Hero';
 import { GlobalStyle } from './globalStyles';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
-import Dashboard from './components/Dashboard';
 import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
@@ -22,8 +21,7 @@ function App() {
       <AuthProvider>
         <Navbar isDarkThemeEnabled={isDarkThemeEnabled} toggleState={toggleState} />
         <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/" component={Hero} />
           {/* <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />
           <Route exact path="/favourites" component={Favourites} /> */}
           <Route path="/sign-up" component={Signup} isDarkThemeEnabled={isDarkThemeEnabled} />
