@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import Landing from './Landing';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import { ReactComponent as MarsIcon } from '../assets/svg/mars.svg';
-import { ReactComponent as VenusIcon } from '../assets/svg/venus.svg';
 import ImageToggle from './ImageToggle';
 
 const Home = ({}) => {
@@ -253,29 +251,5 @@ const LoadMore = styled.button`
     @media screen and (max-width: 768px) {
         width: 100%;
         padding: 20px;
-    }
-`;
-
-const Toggle = styled.label`
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    cursor: pointer;
-
-    .icons {
-        height: 24px;
-
-        svg {
-            padding: 0 5px;
-
-            &.disabled {
-                display: none;
-            }
-        }
-    }
-    input {
-        position: absolute;
-        bottom: 0;
-        opacity: 0;
     }
 `;

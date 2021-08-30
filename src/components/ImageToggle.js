@@ -30,6 +30,16 @@ const Toggle = styled.label`
     right: 10px;
     cursor: pointer;
 
+    @media screen and (max-width: 768px) {
+        bottom: unset;
+        top: calc(40vh + 30px);
+    }
+
+    @media screen and (max-width: 480px) {
+        bottom: unset;
+        top: calc(40vh - 110px);
+    }
+
     .icons {
         height: 24px;
 

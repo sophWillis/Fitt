@@ -64,7 +64,6 @@ const CardImgContainer = styled.div`
 
     img {
         width: 100%;
-        height: 60vh;
         object-fit: cover;
         object-position: top;
 
@@ -82,7 +81,6 @@ const CardImgContainer = styled.div`
 const CardTextContent = styled.div`
     position: absolute;
     top: 40vh;
-    min-height: 60vh;
     width: 100%;
     border-radius: 30px 30px 0 0;
     background-color: var(--background);
