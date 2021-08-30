@@ -6,9 +6,10 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { ReactComponent as MarsIcon } from '../assets/svg/mars.svg';
 import { ReactComponent as VenusIcon } from '../assets/svg/venus.svg';
+import ImageToggle from './ImageToggle';
 
-const Home = () => {
-    const limitCount = 8;
+const Home = ({}) => {
+    const limitCount = 6;
     const { currentUser } = useAuth(),
         [allExercises, setAllExercises] = useState([]),
         [filteredExercises, setFilteredExercises] = useState([]),
@@ -53,7 +54,7 @@ const Home = () => {
         setLoading(false);
     };
 
-    const toggleState = () => {
+    const toggleImage = () => {
         setChangeImage((prevState) => !prevState);
     };
 
@@ -111,20 +112,7 @@ const Home = () => {
                                         <CardImg src={changeImage ? item.female?.image : item.male?.image} alt={item.name} />
                                         <CardTitle>{item.name}</CardTitle>
                                     </Card>
-                                    <Toggle>
-                                        <form>
-                                                <span className="hidden">
-                                                </span>
-                                                <div className="icons">
-                                                    <MarsIcon className={changeImage ? "enabled" : "disabled"} />
-                                                    <VenusIcon className={changeImage ? "disabled" : "enabled"} />
-                                                </div>
-                                                <input
-                                                    name="toggle"
-                                                    type="checkbox"
-                                                    onClick={toggleState} />
-                                            </form>
-                                    </Toggle>
+                                    <ImageToggle changeImage={changeImage} toggleImage={toggleImage} />
                                 </CardContainer>
                             )
                         })}
@@ -186,7 +174,7 @@ const FilterContainer = styled.ul`
 const CardsContainer = styled.div`
     @media screen and (min-width: 769px) {
         display: grid;
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: auto auto auto;
         grid-gap: 20px;
         margin-bottom: 20px;
     }
@@ -232,7 +220,7 @@ const CardImg = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     border-radius: 10px;
 `;
 
@@ -241,7 +229,7 @@ const CardTitle = styled.h2`
     top: 50%;
     transform: translate(0, -50%);
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 20px;
     color: var(--white);
     padding: 0 15px;
     white-space: normal;
@@ -272,7 +260,6 @@ const Toggle = styled.label`
     position: absolute;
     bottom: 10px;
     right: 10px;
-    border-radius: 40px;
     cursor: pointer;
 
     .icons {
@@ -288,6 +275,7 @@ const Toggle = styled.label`
     }
     input {
         position: absolute;
+        bottom: 0;
         opacity: 0;
     }
 `;

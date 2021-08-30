@@ -25,7 +25,10 @@ const Navbar = ({ isDarkThemeEnabled, toggleState }) => {
 
     return (
         <Nav>
-            <Logo to={{ pathname: "/", state: { changeImageFromDetails: true } }} onClick={scrollToTop} className={useLocation().pathname === "/" && !currentUser ? "visually-hidden" : ""}>FITT</Logo>
+            <Logo to={{ pathname: "/", state: { changeImageFromDetails: true } }} onClick={() => {
+                scrollToTop();
+                window.location.pathname === "/" && window.location.reload();
+            }} className={useLocation().pathname === "/" && !currentUser ? "visually-hidden" : ""}>FITT</Logo>
             <NavRight>
                 {currentUser && (
                     <div>
