@@ -120,6 +120,10 @@ const SuccessBox = styled.div`
     border-radius: 5px;
     width: 100%;
     font-size: .875rem;
+
+    @media screen and (min-width: 480px) {
+        width: 500px;
+    }
 `;
 
 const Login = styled.div`

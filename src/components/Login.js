@@ -24,7 +24,6 @@ const Login = () => {
             setError("Failed to log in");
         }
         setLoading(false);
-        setError("");
     };
 
     return (
