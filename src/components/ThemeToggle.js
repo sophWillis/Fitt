@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { ReactComponent as SunIcon } from "../assets/svg/sun.svg";
-import { ReactComponent as MoonIcon } from "../assets/svg/moon.svg";
+import { ReactComponent as SunIcon } from '../assets/svg/sun.svg';
+import { ReactComponent as MoonIcon } from '../assets/svg/moon.svg';
 
 const ThemeToggle = ({ isDarkThemeEnabled, toggleState }) => {
     const updateTheme = (isDarkThemeEnabled) => {
@@ -34,14 +34,13 @@ const ThemeToggle = ({ isDarkThemeEnabled, toggleState }) => {
                     <MoonIcon />
                 </div>
                 <input
-                    id="toggle"
                     name="toggle"
                     type="checkbox"
-                    onClick={toggleState}/>
+                    onClick={toggleState} />
             </Toggle>
         </label>
     );
-}
+};
 
 export default ThemeToggle;
 

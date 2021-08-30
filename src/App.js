@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import Home from './components/Home';
 import { GlobalStyle } from './globalStyles';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
 import { AuthProvider } from './contexts/AuthContext';
+import Details from './components/Details';
+import Page404 from './components/Page404';
 
-function App() {
+const App = () => {
   const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState(false);
 
   const toggleState = () => {
@@ -21,16 +23,17 @@ function App() {
       <AuthProvider>
         <Navbar isDarkThemeEnabled={isDarkThemeEnabled} toggleState={toggleState} />
         <Switch>
-          <Route exact path="/" component={Hero} />
-          {/* <Route exact path="/pokemon/:pokemonIndex" component={Pokemon} />
-          <Route exact path="/favourites" component={Favourites} /> */}
+          <Route exact path="/" component={Home} />
           <Route path="/sign-up" component={Signup} isDarkThemeEnabled={isDarkThemeEnabled} />
           <Route path="/log-in" component={Login} isDarkThemeEnabled={isDarkThemeEnabled} />
           <Route path="/forgot-password" component={ForgotPassword} isDarkThemeEnabled={isDarkThemeEnabled} />
+          <Route path="/404" component={Page404} />
+          <Route exact path="/:id" component={Details} />
+          <Route component={Page404} />
         </Switch>
       </AuthProvider>
     </Router>
   );
-}
+};
 
-export default App;
+export default withRouter(App);

@@ -26,11 +26,11 @@ const Navbar = ({ isDarkThemeEnabled, toggleState }) => {
 
     return (
         <Nav>
-            <Logo to="/" onClick={scrollToTop} className={useLocation().pathname === "/" && !currentUser ? "visually-hidden" : ""}>FITT</Logo>
+            <Logo to={{ pathname: "/", state: { changeImageFromDetails: true } }} onClick={scrollToTop} className={useLocation().pathname === "/" && !currentUser ? "visually-hidden" : ""}>FITT</Logo>
             <NavRight>
                 {currentUser && (
                     <div>
-                        <NavLink onClick={handleLogout}>LOG OUT</NavLink>
+                        <NavLink to="" onClick={handleLogout}>LOG OUT</NavLink>
                         {error && <AlertBox>{error}</AlertBox>}
                     </div>
                 )}
@@ -38,13 +38,13 @@ const Navbar = ({ isDarkThemeEnabled, toggleState }) => {
             </NavRight>
         </Nav>
     );
-}
+};
 
 export default Navbar;
 
 const Nav = styled.nav`
     position: relative;
-    padding: 0 40px;
+    padding: 0 30px;
     height: 80px;
     display: flex;
     align-items: center;
