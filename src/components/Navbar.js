@@ -11,10 +11,9 @@ const Navbar = ({ isDarkThemeEnabled, toggleState }) => {
         history = useHistory();
 
     const handleLogout = async () => {
-    
         try {
             await logout();
-            history.push("/log-in");
+            history.push("/");
         } catch {
             setError("Failed to log out")
         }
@@ -30,7 +29,7 @@ const Navbar = ({ isDarkThemeEnabled, toggleState }) => {
             <NavRight>
                 {currentUser && (
                     <div>
-                        <NavLink to="" onClick={handleLogout}>LOG OUT</NavLink>
+                        <NavLink to="/" onClick={handleLogout}>LOG OUT</NavLink>
                         {error && <AlertBox>{error}</AlertBox>}
                     </div>
                 )}
