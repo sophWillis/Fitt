@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { animateScroll } from 'react-scroll';
 import styled from 'styled-components';
 import Landing from './Landing';
 import { useAuth } from '../contexts/AuthContext';
@@ -13,7 +14,8 @@ const Home = () => {
         [filteredExercises, setFilteredExercises] = useState([]),
         [limit, setLimit] = useState(limitCount),
         [allBodyAreas, setAllBodyAreas] = useState([]),
-        [changeImage, setChangeImage] = useState(false);
+        [changeImage, setChangeImage] = useState(false),
+        [loading, setLoading] = useState(true);
 
     const setBodyAreas = exercises => {
         const uniqueArray = [];
@@ -33,6 +35,7 @@ const Home = () => {
         await fetch('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')
             .then((res) => res.json())
             .then((data) => {
+                setLoading(false);
                 setAllExercises(data.exercises);
                 setFilteredExercises(data.exercises);
                 setBodyAreas(data.exercises);
@@ -43,8 +46,11 @@ const Home = () => {
         fetchData();
     },[]);
 
-    const loadMoreExercises = () => {
+    const loadMoreExercises = (e) => {
+        setLoading(true);
         setLimit(limit + limitCount);
+        animateScroll.scrollToBottom();
+        setLoading(false);
     };
 
     const toggleState = () => {
@@ -74,8 +80,8 @@ const Home = () => {
     return (
         <>
             {!currentUser ? <Landing /> : (
-                <Dashboard>
-                    <DashboardH1>EXERCISES</DashboardH1>
+                <HomeContainer className="scroll-container">
+                    <HomeH1>EXERCISES</HomeH1>
                     <FilterContainer>
                         <li className="active" onClick={resetFilters}>ALL</li>
                         {allBodyAreas.map((bodyArea, key) => (
@@ -123,12 +129,13 @@ const Home = () => {
                             )
                         })}
                     </CardsContainer>
+                    {loading && <div>Loading...</div>}
                     {filteredExercises.length >= limitCount && 
                         <LoadMoreContainer>
-                            <LoadMore onClick={() => !!filteredExercises.length && loadMoreExercises()}>LOAD MORE</LoadMore>
+                            <LoadMore onClick={(event) => !!filteredExercises.length && loadMoreExercises(event)}>LOAD MORE</LoadMore>
                         </LoadMoreContainer>
                     }
-                </Dashboard>
+                </HomeContainer>
             )}
         </>
     );
@@ -136,7 +143,7 @@ const Home = () => {
 
 export default Home;
 
-const Dashboard = styled.div`
+const HomeContainer = styled.div`
     margin: 0 30px;
     height: calc(100vh - 80px);
 
@@ -145,7 +152,7 @@ const Dashboard = styled.div`
     }
 `;
 
-const DashboardH1 = styled.h1`
+const HomeH1 = styled.h1`
     font-size: 30px;
     margin-bottom: 20px;
 `;
