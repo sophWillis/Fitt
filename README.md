@@ -63,7 +63,7 @@ When a user doesn't have an account, or they enter the wrong password an error m
   <img width="100" alt="Screenshot 2021-08-31 at 09 56 16" src="https://user-images.githubusercontent.com/38283239/131475783-46c41bd3-99f1-40a4-9daa-630071080154.png">
 </div>
 
-Here the user can sign up if they don't have an account (or navigate back to the log in page if they do). If sign up is successful, the user will automatically be logged in and will be able to see the home page rendered on the index route instead of the landing page. If sign up is unsuccessful, this can be for one of two reasons: the passwords entered do not match, or there is an existing account associated with the email entered - a detailed error message is display for each so that the user knows how to proceed.
+Here the user can sign up if they don't have an account (or navigate back to the log in page if they do). If sign up is successful, the user will automatically be logged in and will be able to see the home page rendered on the index route instead of the landing page. If sign up is unsuccessful, this can be for one of two reasons: the passwords entered do not match, or there is an existing account associated with the email entered - a detailed error message is displayed for each so that the user knows how to proceed.
 
 ### ForgotPassword.js
 
@@ -76,7 +76,7 @@ Here the user can sign up if they don't have an account (or navigate back to the
   <img width="100" alt="Screenshot 2021-08-31 at 09 57 40" src="https://user-images.githubusercontent.com/38283239/131474398-604d3cce-cb13-441b-8eb0-2cfdb2b43cc9.png">
 </div>
 
-If the user has an account, they can get an email sent to them which contains a link to change their password. They can also navigate back to the log in page and landing page.
+If the user has an account, they can get an email sent to them which contains a link to change their password. They can also navigate back to the log in page.
 
 ### Home.js
 
@@ -87,12 +87,12 @@ If the user has an account, they can get an email sent to them which contains a 
   <img width="100" alt="Screenshot 2021-08-31 at 10 15 28" src="https://user-images.githubusercontent.com/38283239/131476696-99528973-3289-4683-9ed2-1f46284f6811.png">
 </div>
 
-Here the user can choose from a list of exercises fetched from an API. Eight exercises are displayed by default and an additional eight can be loaded with each click of the load more button until no more exercises are available - at which point the 'load more' button is disabled. Each time a user loads more, the window scrolls to the point where the new exercises are rendered.
+Here the user can choose from a list of exercises fetched from an API. Eight exercises are displayed by default and an additional eight can be loaded with each click of the load more button until no more exercises are available - at which point the 'load more' button is disabled. Each time a user loads more, the window scrolls (smoothly) to the point where the new exercises are rendered.
 
-The user can also filter which exercises are rendered by body area. Each time a filter is applied or if the user clicks on the logo in the navbar, we go back to the initial state and render only eight exercises.
+The user can also filter which exercises are rendered by body area. Each time a filter is applied or the user clicks on the logo in the navbar, we go back to the initial state and render only eight exercises.
 
 **To improve:**
-*As there can be a lot of exercises, I will make the navbar sticky so that the user can scroll back to the top of the page to change the filters more easily. I would also like to allow multiple filters to be active at a time. In terms of design, I would like to display the images better so that they don't appear cropped.*
+*As there can be a lot of exercises, I will make the navbar sticky so that the user can click on the logo to scroll (smoothly) back to the top of the page to change the filters more easily. I would also like to allow multiple filters to be active at a time. In terms of design, I would like to display the images better so that they don't appear cropped.*
 
 ### ImageToggle.js
 
@@ -104,10 +104,10 @@ The user can also filter which exercises are rendered by body area. Each time a 
 
 An inclusive part of the design for this application is the image toggle, which allows the user to switch between male and female images by clicking the icon displayed in the bottom right corner of each image (both in the home page and details pages).
 
-In the homepage I had to add a function to fix the first image returned from the API because the source for the female image was incorrect.
+In the homepage I had to add a function to fix the first image returned from the API because the source for the female image is incorrect.
 
 **To improve:**
-*I plan to use the event.target from each of the gender icons, when clicked, to change the image only for the card that holds the icons, not all cards. I would also like to create a user profile page, where the user can toggle a setting to fix the gender of every image in the site - I plan to add a checkbox for the user to be able to choose that no gender should be specified (I will enabled this by default). When this feature is enabled, the images will be random and will feature both men and women, ensuring that one gender is never chosen as the default.*
+*I plan to use the event.target from each of the gender icons, when clicked, to change the image only for the card that holds the icons, not all cards. I would also like to create a user profile page, where the user can enable/disable a setting to set the gender of every image in the site - I plan to also add a checkbox for the user to be able to choose that no gender should be specified (I will enabled this by default). When this feature is enabled, the images will be random and will feature both men and women, ensuring that one gender is never chosen as the default.*
 
 ### Details.js
 
@@ -119,7 +119,7 @@ In the homepage I had to add a function to fix the first image returned from the
 These pages have dynamic routes for each exercise, and a more detailed view of the exercise is displayed when a user links to it from the home page. To avoid fetching the data again for this component, I passed the excercise data as a prop with the link, along with the state of the image toggle so that if a female image is displayed on the home page when a user follows a link to a details page, the same image is show in the details page.
 
 **To improve:**
-*Going back to the home page from the details page (following the link in the navbar), I want the state of the image source (male or female) to be persisted. To do this, I plan to pass the state as a prop in **Navbar.js** using the location. Also, to ensure that the navbar is always visible for the user, I would like to either only allow scrolling in the text container in mobile (in desktop this is already enabled) or make the navbar sticky. On mobile, I'd like to allow the user to pull down on the text container to be able to view the complete image which sits behind.*
+*Going back to the home page from the details page (following the link in the navbar), I want the state of the image source (male or female) to be persisted. To do this, I plan to pass the state as a prop in **Navbar.js** using the location. Also, to ensure that the navbar is always visible for the user, I would like to either only allow scrolling in the text container in mobile (in desktop this is already enabled) or make the navbar sticky. On mobile, I'd like to allow the user to pull down on the text container to be able to view the complete image which sits behind it.*
 
 ## Installation
 
