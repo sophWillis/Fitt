@@ -50,7 +50,7 @@ const Login = () => {
 export default Login;
 
 const Card = styled.div`
-    height: calc(100vh - 80px);
+    height: calc(${window.innerHeight + 'px'} - 80px);
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -49,7 +49,7 @@ export default Details;
 
 const CardImgContainer = styled.div`
     position: relative;
-    height: calc(100vh - 80px);
+    height: calc(${window.innerHeight + 'px'} - 80px);
 
     :before {
         content: "";
@@ -57,7 +57,7 @@ const CardImgContainer = styled.div`
         background-color: var(--black);
         position: absolute;
         width: 100%;
-        height: calc(100vh - 80px);
+        height: calc(${window.innerHeight + 'px'} - 80px);
 
         @media screen and (min-width: 769px) {
             border-top-right-radius: 10px;
@@ -111,7 +111,7 @@ const CardTextContent = styled.div`
         right: 0;
         top: 80px;
         background-color: transparent;
-        height: calc(100vh - 80px);
+        height: calc(${window.innerHeight + 'px'} - 80px);
         overflow-y: scroll;
     }
 `;

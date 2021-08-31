@@ -20,7 +20,7 @@ const Landing = () => {
 export default Landing;
 
 const LandingPage = styled.div`
-    height: calc(100vh - 80px);
+    height: calc(${window.innerHeight + 'px'} - 80px);
     display: flex;
     flex-direction: column;
     align-items: center;

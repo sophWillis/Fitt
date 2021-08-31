@@ -141,7 +141,7 @@ export default Home;
 
 const HomeContainer = styled.div`
     margin: 0 30px;
-    height: calc(100vh - 80px);
+    height: calc(${window.innerHeight + 'px'} - 80px);
 
     @media screen and (max-width: 768px) {
         margin: 0 30px;
