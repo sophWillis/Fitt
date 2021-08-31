@@ -45,7 +45,7 @@ The user can sign in, log in and toggle the light/dark theme. This page only ren
   <img width="100" alt="Screenshot 2021-08-31 at 08 56 13" src="https://user-images.githubusercontent.com/38283239/131466640-8cff6f25-c32a-492e-8c5f-1b442f3a5278.png">
 </div>
 
-This page allows the user to log in or, alternitavely, they can navigate back to the landing page, go to the sign up page or go to the forgot password page.
+This page allows the user to log in or, alternatively, they can navigate back to the landing page, go to the sign up page or go to the forgot password page.
 
 When a user doesn't have an account, or they enter the wrong password an error message is shown. If log in is successful, the home page will be rendered on the index route in place of the landing page.
 
@@ -63,7 +63,7 @@ When a user doesn't have an account, or they enter the wrong password an error m
   <img width="100" alt="Screenshot 2021-08-31 at 09 56 16" src="https://user-images.githubusercontent.com/38283239/131475783-46c41bd3-99f1-40a4-9daa-630071080154.png">
 </div>
 
-Here the user can sign up if they don't have an account (or navigate back to the log in page if they do). If sign up is successful, the user will automatically be logged in and will be able to see the home page rendered on the index route instead of the landing page. If sign up is unsuccessful, this can be for one of two reasons: the passwords entered do not match or an there is an existing account associated with the email entered - a detailed error message is display for each so that the user knows how to proceed.
+Here the user can sign up if they don't have an account (or navigate back to the log in page if they do). If sign up is successful, the user will automatically be logged in and will be able to see the home page rendered on the index route instead of the landing page. If sign up is unsuccessful, this can be for one of two reasons: the passwords entered do not match, or there is an existing account associated with the email entered - a detailed error message is display for each so that the user knows how to proceed.
 
 ### ForgotPassword.js
 
