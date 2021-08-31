@@ -87,7 +87,7 @@ If the user has an account, they can get an email sent to them which contains a 
   <img width="100" alt="Screenshot 2021-08-31 at 10 15 28" src="https://user-images.githubusercontent.com/38283239/131476696-99528973-3289-4683-9ed2-1f46284f6811.png">
 </div>
 
-Here the user can choose from a list of exercises fetched from an API. Eight exercises are displayed by default and eight more can be loaded with each click of the load more button until no more exercises are available - at which point the 'load more' button is disabled. Each time a user loads more, the window scrolls to the point where the new exercises are rendered.
+Here the user can choose from a list of exercises fetched from an API. Eight exercises are displayed by default and an additional eight can be loaded with each click of the load more button until no more exercises are available - at which point the 'load more' button is disabled. Each time a user loads more, the window scrolls to the point where the new exercises are rendered.
 
 The user can also filter which exercises are rendered by body area. Each time a filter is applied or if the user clicks on the logo in the navbar, we go back to the initial state and render only eight exercises.
 
@@ -107,7 +107,7 @@ An inclusive part of the design for this application is the image toggle, which 
 In the homepage I had to add a function to fix the first image returned from the API because the source for the female image was incorrect.
 
 **To improve:**
-*I plan to use the event.target from each of the gender icons, when clicked, to change the image only for the card that holds the icons, not all cards. I would also like to create a user profile page, where the user can toggle a setting to fix the gender of every image in the site - I would also like to add a check a box for the user to be able to choose that no gender should be specified (I will enabled this by default), in which case the images will be random and will feature both men and women - ensuring that one gender is never default.*
+*I plan to use the event.target from each of the gender icons, when clicked, to change the image only for the card that holds the icons, not all cards. I would also like to create a user profile page, where the user can toggle a setting to fix the gender of every image in the site - I plan to add a checkbox for the user to be able to choose that no gender should be specified (I will enabled this by default). When this feature is enabled, the images will be random and will feature both men and women, ensuring that one gender is never chosen as the default.*
 
 ### Details.js
 
@@ -116,7 +116,7 @@ In the homepage I had to add a function to fix the first image returned from the
   <img width="100" alt="Screenshot 2021-08-31 at 10 18 50" src="https://user-images.githubusercontent.com/38283239/131477043-12f15dc4-1110-47f1-bc1b-6c5f8a8d1cac.png">
 </div>
 
-These pages have dynamic routes for each exercise, and a more detailed view of the exercise is displayed when a user links to it from the home page. To avoid fetching the data again for this componenet, I passed the excercise data as a prop with the link, along with the state of the image toggle so that if a female image is displayed on the home page when a user follows a link to a details page, the same image is show in the details page.
+These pages have dynamic routes for each exercise, and a more detailed view of the exercise is displayed when a user links to it from the home page. To avoid fetching the data again for this component, I passed the excercise data as a prop with the link, along with the state of the image toggle so that if a female image is displayed on the home page when a user follows a link to a details page, the same image is show in the details page.
 
 **To improve:**
 *Going back to the home page from the details page (following the link in the navbar), I want the state of the image source (male or female) to be persisted. To do this, I plan to pass the state as a prop in **Navbar.js** using the location. Also, to ensure that the navbar is always visible for the user, I would like to either only allow scrolling in the text container in mobile (in desktop this is already enabled) or make the navbar sticky. On mobile, I'd like to allow the user to pull down on the text container to be able to view the complete image which sits behind.*
