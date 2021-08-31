@@ -32,7 +32,9 @@ const Details = ({
             <>
                 <CardImgContainer>
                     <img src={changeDetailsImage ? item.female.image : item.male.image} alt={item.name} />
-                    <ImageToggle changeDetailsImage={changeDetailsImage} toggleImage={toggleImage} />
+                    <ImageToggleContainer>
+                        <ImageToggle changeDetailsImage={changeDetailsImage} toggleImage={toggleImage} />
+                    </ImageToggleContainer>
                 </CardImgContainer>
                 <CardTextContent>
                     <CardH1>{item.name}</CardH1>
@@ -75,6 +77,20 @@ const CardImgContainer = styled.div`
 
     @media screen and (min-width: 769px) {
         width: 50%;
+    }
+`;
+
+const ImageToggleContainer = styled.div`
+    .image-toggle {
+        @media screen and (max-width: 768px) {
+            bottom: unset;
+            top: calc(40vh + 30px);
+        }
+
+        @media screen and (max-width: 480px) {
+            bottom: unset;
+            top: calc(40vh - 110px);
+        }
     }
 `;
 

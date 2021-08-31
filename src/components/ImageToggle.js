@@ -3,15 +3,16 @@ import styled from 'styled-components';
 import { ReactComponent as MarsIcon } from '../assets/svg/mars.svg';
 import { ReactComponent as VenusIcon } from '../assets/svg/venus.svg';
 
-const ImageToggle = ({ changeImage, toggleImage }) => {
+const ImageToggle = ({ changeImage, changeDetailsImage, toggleImage }) => {
+    
     return (
-        <Toggle>
+        <Toggle className="image-toggle">
             <form>
                     <span className="hidden">
                     </span>
                     <div className="icons">
-                        <MarsIcon className={changeImage ? "enabled" : "disabled"} />
-                        <VenusIcon className={changeImage ? "disabled" : "enabled"} />
+                        <MarsIcon className={changeImage || changeDetailsImage ? "enabled" : "disabled"} />
+                        <VenusIcon className={changeImage || changeDetailsImage ? "disabled" : "enabled"} />
                     </div>
                     <input
                         name="toggle"
@@ -29,16 +30,6 @@ const Toggle = styled.label`
     bottom: 10px;
     right: 10px;
     cursor: pointer;
-
-    @media screen and (max-width: 768px) {
-        bottom: unset;
-        top: calc(40vh + 30px);
-    }
-
-    @media screen and (max-width: 480px) {
-        bottom: unset;
-        top: calc(40vh - 110px);
-    }
 
     .icons {
         height: 24px;

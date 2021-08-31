@@ -56,7 +56,14 @@ const Home = ({}) => {
         setChangeImage((prevState) => !prevState);
     };
 
-    const filterExercises = (selectedBodyArea) => {
+    const setActiveTagClass = (e) => {
+        e.target.parentElement?.querySelectorAll('li')?.forEach(tag => {
+            tag.classList.remove('active');
+        })
+        e.target.classList.add('active');
+    }
+
+    const filterExercises = (e, selectedBodyArea) => {
         const filteredExercises = [];
 
         setLimit(limitCount);
@@ -69,12 +76,15 @@ const Home = ({}) => {
                 }
             });
         });
+
+        setActiveTagClass(e);
     };
 
-    const resetFilters = () => {
+    const resetFilters = (e) => {
         setFilteredExercises(allExercises);
         setLimit(limitCount);
-    }
+        setActiveTagClass(e);
+    };
 
     return (
         <>
@@ -86,7 +96,7 @@ const Home = ({}) => {
                         {allBodyAreas.map((bodyArea, key) => (
                             <li
                                 key={key}
-                                onClick={() => filterExercises(bodyArea)}>
+                                onClick={(event) => filterExercises(event, bodyArea)}>
                                 {bodyArea}
                             </li>
                         ))}
