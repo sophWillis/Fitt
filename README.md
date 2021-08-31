@@ -25,7 +25,7 @@ https://www.figma.com/file/lOCgcKa2wN9KKvVP1cNtyo/Exercise-App?node-id=0%3A1
 <img width="100" alt="Screenshot 2021-08-31 at 09 05 59" src="https://user-images.githubusercontent.com/38283239/131466357-0319f7d7-6703-4a32-8c73-2a32a8cdc765.png">
 </div>
 
-The navbar is rendered on every page. It always renders **ThemeToggle.js** which displays a toggle for the user to switch between light and dark themes, the state of which persists as the user navigates through the site. It has the logo with a link to take the user back to the index and a link to log out. When a user is logged in, Home.js will render and the logout link will be displayed. When there is no user logged in, Landing.js will render and both the logout link and logo link will be visually hidden in the navbar.
+The navbar is rendered on every page. It always renders **ThemeToggle.js** which displays a toggle for the user to switch between light and dark themes - the state of which persists as the user navigates through the site. It has the logo with a link to take the user back to the index page and a link to log out. When a user is logged in, Home.js will render and the logout link will be displayed. When there is no user logged in, Landing.js will render and both the logout link and logo link will be visually hidden in the navbar.
 
 ### Landing.js
 
@@ -34,7 +34,7 @@ The navbar is rendered on every page. It always renders **ThemeToggle.js** which
   <img width="100" alt="Screenshot 2021-08-31 at 08 47 25" src="https://user-images.githubusercontent.com/38283239/131463882-2078d77d-09b1-4fad-8d05-18e8041de4d7.png">
 </div>
 
-The user can sign in or log in. This page only renders when a user is logged out.
+The user can sign in, log in and toggle the light/dark theme. This page only renders when a user is logged out.
 
 ### Login.js
 
@@ -45,9 +45,9 @@ The user can sign in or log in. This page only renders when a user is logged out
   <img width="100" alt="Screenshot 2021-08-31 at 08 56 13" src="https://user-images.githubusercontent.com/38283239/131466640-8cff6f25-c32a-492e-8c5f-1b442f3a5278.png">
 </div>
 
-This page allows the user to log in or, alternitavely, they can go back to the landing page or go to the sign up page or forgot password page.
+This page allows the user to log in or, alternitavely, they can navigate back to the landing page, go to the sign up page or go to the forgot password page.
 
-When a user doesn't have an account, or they enter the wrong password an error message is shown.
+When a user doesn't have an account, or they enter the wrong password an error message is shown. If log in is successful, the home page will be rendered on the index route in place of the landing page.
 
 **To improve:** 
 *To improve the user experience, I will add a more detailed message for each case so that the user knows whether they need to sign up or if they have entered the wrong password.*
@@ -63,7 +63,7 @@ When a user doesn't have an account, or they enter the wrong password an error m
   <img width="100" alt="Screenshot 2021-08-31 at 09 56 16" src="https://user-images.githubusercontent.com/38283239/131475783-46c41bd3-99f1-40a4-9daa-630071080154.png">
 </div>
 
-Here the user can sign up if they don't have an account (or link back to the log in page if they do). If sign up is successful, the user will automatically be logged in and will be able to see the home page rendered. If sign up is unsuccessful, this can be for one of two reasons: the passwords entered do not match or an there is an existing account associated with the email entered.
+Here the user can sign up if they don't have an account (or navigate back to the log in page if they do). If sign up is successful, the user will automatically be logged in and will be able to see the home page rendered on the index route instead of the landing page. If sign up is unsuccessful, this can be for one of two reasons: the passwords entered do not match or an there is an existing account associated with the email entered - a detailed error message is display for each so that the user knows how to proceed.
 
 ### ForgotPassword.js
 
@@ -76,7 +76,7 @@ Here the user can sign up if they don't have an account (or link back to the log
   <img width="100" alt="Screenshot 2021-08-31 at 09 57 40" src="https://user-images.githubusercontent.com/38283239/131474398-604d3cce-cb13-441b-8eb0-2cfdb2b43cc9.png">
 </div>
 
-If the user has an account, they can get an email sent to them which contains a link to change their password.
+If the user has an account, they can get an email sent to them which contains a link to change their password. They can also navigate back to the log in page and landing page.
 
 ### Home.js
 
@@ -92,7 +92,7 @@ Here the user can choose from a list of exercises fetched from an API. Eight exe
 The user can also filter which exercises are rendered by body area. Each time a filter is applied or if the user clicks on the logo in the navbar, we go back to the initial state and render only eight exercises.
 
 **To improve:**
-*As there can be a lot of exercises, I will make the navbar sticky so that the user can scroll back to the top of the page to change the filters more easily. I would also like to allow multiple filters to be active at a time.*
+*As there can be a lot of exercises, I will make the navbar sticky so that the user can scroll back to the top of the page to change the filters more easily. I would also like to allow multiple filters to be active at a time. In terms of design, I would like to display the images better so that they don't appear cropped.*
 
 ### ImageToggle.js
 
@@ -119,4 +119,11 @@ In the homepage I had to add a function to fix the first image returned from the
 These pages have dynamic routes for each exercise, and a more detailed view of the exercise is displayed when a user links to it from the home page. To avoid fetching the data again for this componenet, I passed the excercise data as a prop with the link, along with the state of the image toggle so that if a female image is displayed on the home page when a user follows a link to a details page, the same image is show in the details page.
 
 **To improve:**
-*Going back to the home page from the details page (following the link in the navbar), I want the state of the image source (male or female) to be persisted. To do this, I plan to pass the state as a prop in **Navbar.js** using the location. Also, to ensure that the navbar is always visible for the user, I would like to either only allow scrolling in the text container in mobile (in desktop this is already enabled) or make the navbar sticky.*
+*Going back to the home page from the details page (following the link in the navbar), I want the state of the image source (male or female) to be persisted. To do this, I plan to pass the state as a prop in **Navbar.js** using the location. Also, to ensure that the navbar is always visible for the user, I would like to either only allow scrolling in the text container in mobile (in desktop this is already enabled) or make the navbar sticky. On mobile, I'd like to allow the user to pull down on the text container to be able to view the complete image which sits behind.*
+
+## Installation
+
+```
+npm install
+npm start
+```
