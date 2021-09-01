@@ -103,6 +103,14 @@ const Home = ({}) => {
                     </FilterContainer>
                     <CardsContainer>
                         {filteredExercises.slice(0, limit).map((item, key) => {
+                            const loadMoreBtn = document.querySelector('.load-more');
+
+                            if ((key + 1) === filteredExercises.length) {
+                                loadMoreBtn && (loadMoreBtn.disabled = true);
+                            } else {
+                                loadMoreBtn && (loadMoreBtn.disabled = false);
+                            }
+
                             // fixing wrong female image URL for first object in fetched data
                             if (key === 0 && item.female.image) {
                                 item.female.image = "https://cdni.gs.lightning-e.com/media/5c0e6814ee0147fd16ef61d2-femalepullupthumbnail.jpg";
@@ -126,9 +134,9 @@ const Home = ({}) => {
                         })}
                     </CardsContainer>
                     {loading && <div>Loading...</div>}
-                    {filteredExercises.length >= limitCount && 
+                    {filteredExercises.length > limitCount && 
                         <LoadMoreContainer>
-                            <LoadMore onClick={(event) => !!filteredExercises.length && loadMoreExercises(event)}>LOAD MORE</LoadMore>
+                            <LoadMore className="load-more" onClick={(event) => !!filteredExercises.length && loadMoreExercises(event)}>LOAD MORE</LoadMore>
                         </LoadMoreContainer>
                     }
                 </HomeContainer>
@@ -249,14 +257,21 @@ const LoadMoreContainer = styled.div`
 `;
 
 const LoadMore = styled.button`
-    background-color: var(--foreground);
-    color: var(--background);
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 3px;
     font-size: 16px;
     display: block;
     margin: 0 auto;
+
+    &:not(:disabled) {
+        background-color: var(--foreground);
+        color: var(--background);
+    }
+
+    :disabled {
+        cursor: unset;
+    }
 
     @media screen and (max-width: 768px) {
         width: 100%;
