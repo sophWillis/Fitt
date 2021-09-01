@@ -6,7 +6,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import ImageToggle from './ImageToggle';
 
-const Home = ({}) => {
+const Home = () => {
     const limitCount = 6;
     const { currentUser } = useAuth(),
         [allExercises, setAllExercises] = useState([]),
@@ -30,18 +30,17 @@ const Home = ({}) => {
         setAllBodyAreas(uniqueArray);
     };
 
-    const fetchData = async () => {
-        await fetch('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')
-            .then((res) => res.json())
-            .then((data) => {
-                setLoading(false);
-                setAllExercises(data.exercises);
-                setFilteredExercises(data.exercises);
-                setBodyAreas(data.exercises);
-            });
-    };
-
     useEffect(() => {
+        const fetchData = async () => {
+            await fetch('https://private-922d75-recruitmenttechnicaltest.apiary-mock.com/customexercises/')
+                .then((res) => res.json())
+                .then((data) => {
+                    setLoading(false);
+                    setAllExercises(data.exercises);
+                    setFilteredExercises(data.exercises);
+                    setBodyAreas(data.exercises);
+                });
+        };
         fetchData();
     },[]);
 
